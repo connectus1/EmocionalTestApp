@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/Theme.TestApp"
+    tools:context=".BottomDialog.BottomSheetRegistro">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+
+                android:text="Registrarse"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editNombre"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/round_input_text"
+                android:hint="@string/input_contraseña"
+                android:textSize="14sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apellidos"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editApellido"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/round_input_text"
+                android:hint="@string/input_contraseña"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Correo Electronico"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/round_input_text"
+                android:hint="@string/input_correo"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contraseña"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editContra"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/round_input_text"
+                android:hint="@string/input_contraseña"
+                android:textSize="14sp" />
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Nombre"-->
+<!--                android:textSize="12sp" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editNombre"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="48dp"-->
+
+<!--                android:layout_marginBottom="15dp"-->
+<!--                android:background="@drawable/round_input_text"-->
+<!--                android:hint="@string/input_contraseña"-->
+<!--                android:textSize="14sp" />-->
+
+            <CheckBox
+                android:id="@+id/chkTerminos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Acepto los Terminos y Condiciones de uso"
+
+                android:textAlignment="textStart" />
+
+            <Button
+                android:id="@+id/btnRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/round_buttons"
+                android:text="Iniciar sesion"
+
+                android:enabled="false"/>
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/textview1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+
+<!--                android:text="¿No tienes una cuenta?"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtRegistro"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+
+<!--                android:text="REGISTRATE"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/primaryColorVariant"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold" />-->
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

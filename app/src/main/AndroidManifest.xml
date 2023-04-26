@@ -12,12 +12,14 @@
         android:theme="@style/Theme.TestApp"
         tools:targetApi="31">
         <activity
+            android:name=".TestPager.TestActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TestApp.NoActionBar"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.TestApp.NoActionBar"
-            >
-
+            android:theme="@style/Theme.TestApp.NoActionBar">
         </activity>
         <activity
             android:name=".LoginActivity"

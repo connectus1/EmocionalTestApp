@@ -14,5 +14,6 @@
     <color name="secondColorVariant">#9B2AAC</color>
     <color name="thirdColor">#35d2bd</color>
 
+    <color name="verde">#32CD32</color>
     <color name="gray">#E6E6E6</color>
 </resources>

@@ -15,9 +15,9 @@ import com.example.testapp.LoginActivity;
 public class LoginVolley extends Volley implements Response.Listener<String>, Response.ErrorListener{
     private LoginRequest request;
     private Activity activity;
-    private String url ="";
+    private String url = "https://biosur365.com/emocionalapp/user-account.php";
 
-    public void LoginVolley(Activity activity, String correo, String contra){
+    public  LoginVolley(Activity activity, String correo, String contra){
         this.activity = activity;
         url += "?correo="+correo + "&contra=" + contra;
         request = new LoginRequest(Request.Method.GET, url,this::onResponse, this::onErrorResponse);
@@ -36,11 +36,9 @@ public class LoginVolley extends Volley implements Response.Listener<String>, Re
     @Override
     public void onResponse(String response) {
         switch (response){
-            case "1": ((LoginActivity)activity).startIntent();
+            case "ok": ((LoginActivity)activity).startIntent();
                  break;
-            case "0": Toast.makeText(activity, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show();
-                break;
-            default: Toast.makeText(activity, "Cuenta no registrada", Toast.LENGTH_SHORT).show();
+            default: Toast.makeText(activity, "Correo o contraseña incorrecta", Toast.LENGTH_SHORT).show();
         }
 
     }

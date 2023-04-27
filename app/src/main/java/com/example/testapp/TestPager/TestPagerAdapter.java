@@ -8,7 +8,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 public class TestPagerAdapter extends FragmentStateAdapter {
     private List<FragmentTestTarget> fragments;
@@ -21,7 +20,6 @@ public class TestPagerAdapter extends FragmentStateAdapter {
              questions) {
             fragments.add(new FragmentTestTarget(item));
         }
-
     }
 
     @NonNull
@@ -33,5 +31,10 @@ public class TestPagerAdapter extends FragmentStateAdapter {
     @Override
     public int getItemCount() {
         return fragments.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
     }
 }

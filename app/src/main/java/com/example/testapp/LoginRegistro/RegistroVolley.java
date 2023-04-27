@@ -1,38 +1,41 @@
 package com.example.testapp.LoginRegistro;
 
 import android.app.Activity;
+import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.testapp.BottomDialog.BottomSheetRegistro;
 
 
 public class RegistroVolley extends Volley implements Response.Listener<String>, Response.ErrorListener {
     private Activity activity;
     private Usuario usuario;
-    private String url = "";
+    private String url = "https://biosur365.com/emocionalapp/user-account.php";
     private RequestRegistro requestRegistro;
 
     public RegistroVolley(Activity activity, Usuario usuario) {
         this.activity = activity;
-
         this.usuario = usuario;
-        setUrl(usuario);
 
-        requestRegistro = new RequestRegistro(Request.Method.PUT, url,this::onResponse, this::onErrorResponse);
-    }
+        requestRegistro = new RequestRegistro(Request.Method.POST, url,this::onResponse, this::onErrorResponse){
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return usuario.getJson().toString().getBytes();
+            }
 
-    private void setUrl(@NonNull Usuario usuario){
-        url += "?correo=" + usuario.getCorreo()
-                + "&contra=" + usuario.getContraseña()
-                + "&nombre=" + usuario.getNombre()
-                + "&apellido="+ usuario.getApellido();
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
     }
 
     public void registrar(){
@@ -52,7 +55,11 @@ public class RegistroVolley extends Volley implements Response.Listener<String>,
 
     @Override
     public void onResponse(String response) {
+        Log.e("registro", response);
 
+        if (response.equals("ok")){
+            BottomSheetRegistro.closeDialog();
+        }
     }
 
     private static class RequestRegistro extends StringRequest{

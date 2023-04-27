@@ -6,6 +6,7 @@ import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 
+import com.example.testapp.LoginActivity;
 import com.example.testapp.LoginRegistro.RegistroVolley;
 import com.example.testapp.LoginRegistro.Usuario;
 import com.example.testapp.databinding.BottomSheetRegistroBinding;
@@ -15,7 +16,7 @@ public class BottomSheetRegistro extends BottomSheetDialog {
     private BottomSheetRegistroBinding binding;
     private RegistroVolley registroVolley;
     private Activity activity;
-
+    private static BottomSheetRegistro bottomSheetRegistro;
     public BottomSheetRegistro(@NonNull Activity activity) {
         super(activity);
         this.activity = activity;
@@ -25,13 +26,15 @@ public class BottomSheetRegistro extends BottomSheetDialog {
         setCancelable(true);
 
         initComponents();
+        this.bottomSheetRegistro = this;
     }
 
     private void initComponents(){ //Inicializa los componentes
         binding.btnRegistro.setOnClickListener(clickRegistro);
         binding.chkTerminos.setOnCheckedChangeListener(changeTerminos);
+        binding.editFechaNac.setOnClickListener(clickCalendar);
 
-        registroVolley = new RegistroVolley(activity, createUsuario());
+//        registroVolley = new RegistroVolley(activity, createUsuario());
     }
 
     private Usuario createUsuario(){ //Devuelve un objeto usuario con la informacion
@@ -40,14 +43,21 @@ public class BottomSheetRegistro extends BottomSheetDialog {
         usuario.setApellido(binding.editApellido.getEditableText().toString());
         usuario.setCorreo(binding.editCorreo.getEditableText().toString());
         usuario.setContraseña(binding.editContra.getEditableText().toString());
+        usuario.setFechaNac(binding.editFechaNac.getEditableText().toString());
 
         return usuario;
+    }
+
+    public void setCalendarInput(String fecha){
+        binding.editFechaNac.setText(fecha);
     }
 
     //==============================
     // Listeners
     //==============================
     private View.OnClickListener clickRegistro = view -> {
+//        createUsuario();
+        registroVolley = new RegistroVolley(activity, createUsuario());
         registroVolley.registrar();
     };
 
@@ -55,12 +65,22 @@ public class BottomSheetRegistro extends BottomSheetDialog {
         binding.btnRegistro.setEnabled(b);
     };
 
+    private View.OnClickListener clickCalendar = view ->{
+        ((LoginActivity)activity).showCalendar();
+    };
+
+
     //=============================
     // Estados de la actividad
     //==============================
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        registroVolley.close();
+        if (registroVolley != null)
+            registroVolley.close();
+    }
+
+    public static void closeDialog(){
+        bottomSheetRegistro.cancel();
     }
 }

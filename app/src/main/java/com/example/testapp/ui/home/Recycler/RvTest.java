@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testapp.R;
-import com.example.testapp.TestPager.TestActivity;
+import com.example.testapp.TestActivity;
 
 import java.util.ArrayList;
 import java.util.List;

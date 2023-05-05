@@ -1,9 +1,9 @@
-package com.example.testapp.TestPager;
+package com.example.testapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -11,10 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.testapp.R;
+import com.example.testapp.TestPager.ItemQuestion;
+import com.example.testapp.TestPager.TestPagerAdapter;
+import com.example.testapp.TestPager.VolleyTest;
 import com.example.testapp.databinding.ActivityTestBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TestActivity extends AppCompatActivity implements Runnable, View.OnClickListener {
@@ -22,7 +23,9 @@ public class TestActivity extends AppCompatActivity implements Runnable, View.On
     private ActivityTestBinding binding;
     private ViewPager2 viewPager;
     private Handler handler;
+    private VolleyTest volleyTest;
     private List<ItemQuestion> itemQuestionList;
+    private int[] seleccion;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +34,15 @@ public class TestActivity extends AppCompatActivity implements Runnable, View.On
         setContentView(binding.getRoot());
         initComponents();
 
-        itemQuestionList = new ArrayList<>();
-        itemQuestionList.add(new ItemQuestion("Prueba1"));
-        itemQuestionList.add(new ItemQuestion("Prueba2"));
-        itemQuestionList.add(new ItemQuestion("Prueba3"));
+        volleyTest = new VolleyTest(this, "1");
+        volleyTest.start();
+    }
 
-        TestPagerAdapter adapter = new TestPagerAdapter(getSupportFragmentManager(), getLifecycle(), itemQuestionList);
-        viewPager.setAdapter(adapter);
-        viewPager.setUserInputEnabled(false);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        volleyTest.close();
+
     }
 
     private void initComponents(){ //Inicializa los componentes
@@ -49,7 +53,11 @@ public class TestActivity extends AppCompatActivity implements Runnable, View.On
         binding.cardTriste.setOnClickListener(this::onClick);
 
         handler = new Handler();
+
         viewPager = binding.viewPagerTest;
+        viewPager.setUserInputEnabled(false);
+
+        seleccion = new int[5];
     }
 
     private void setFondoBlancoCards(){
@@ -60,18 +68,37 @@ public class TestActivity extends AppCompatActivity implements Runnable, View.On
         binding.cardTriste.setCardBackgroundColor(getColor(R.color.white));
     }
 
+    //Recibe Un List<ItemQuestion> con la informacion de las preguntas,
+    //se inicializa el TestPagerAdapter para ser asignado al ViewPager2
+    public void initPager(List<ItemQuestion> questionList){
+        this.itemQuestionList = questionList;
+        TestPagerAdapter adapter = new TestPagerAdapter(getSupportFragmentManager(),
+                getLifecycle(),
+                questionList);
+
+        binding.txtIndiceTest.setText(1 + "/" + adapter.getItemCount());
+        viewPager.setAdapter(adapter);
+    }
+
     public void nextPage(){
         int index = viewPager.getCurrentItem();
 
         if (++index <= viewPager.getAdapter().getItemCount()-1 ){
             viewPager.setCurrentItem(index, true);
-        }else{
-            int suma = 0;
-            for (ItemQuestion item: itemQuestionList) {
-                suma += item.getPuntuacion();
-            }
-
+            binding.txtIndiceTest.setText((index+1) + "/" + viewPager.getAdapter().getItemCount());
         }
+        else {
+
+            // Una vez terminado las preguntas abre la activity de resultados,
+            // se envia por Intent el arreglo con los datos
+            Intent i = new Intent(this, ResultadosTest.class);
+            i.putExtra("resultados", this.seleccion);
+            startActivity(i);
+
+            this.finish();
+        }
+
+
     }
 
 //  ============= Funciones Runnable =============
@@ -93,15 +120,15 @@ public class TestActivity extends AppCompatActivity implements Runnable, View.On
         ((CardView)view).setCardBackgroundColor(getColor(R.color.verde));
 
         switch (id){
-            case R.id.cardFeliz: itemQuestionList.get(viewPager.getCurrentItem()).setPuntuacion(4);
+            case R.id.cardFeliz: this.seleccion[4]++;
                 break;
-            case R.id.cardSemiFeliz: itemQuestionList.get(viewPager.getCurrentItem()).setPuntuacion(3);
+            case R.id.cardSemiFeliz: this.seleccion[3]++;
                 break;
-            case R.id.cardNeutro: itemQuestionList.get(viewPager.getCurrentItem()).setPuntuacion(2);
+            case R.id.cardNeutro: this.seleccion[2]++;
                 break;
-            case R.id.cardSemiTriste: itemQuestionList.get(viewPager.getCurrentItem()).setPuntuacion(1);
+            case R.id.cardSemiTriste:this.seleccion[1]++;
                 break;
-            default: itemQuestionList.get(viewPager.getCurrentItem()).setPuntuacion(0);
+            default: this.seleccion[0]++;
         }
 
         if (!isRunHandler())

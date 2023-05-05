@@ -1,7 +1,6 @@
 package com.example.testapp.LoginRegistro;
 
 import android.app.Activity;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -38,10 +37,12 @@ public class RegistroVolley extends Volley implements Response.Listener<String>,
         };
     }
 
+    //Ingresa a la cola de peticiones de volley el Request
     public void registrar(){
         newRequestQueue(activity).add(requestRegistro);
     }
 
+    //Si el Request no es nulo, cierra la peticion por Volley
     public void close(){
         if (requestRegistro != null){
             requestRegistro.cancel();
@@ -55,8 +56,6 @@ public class RegistroVolley extends Volley implements Response.Listener<String>,
 
     @Override
     public void onResponse(String response) {
-        Log.e("registro", response);
-
         if (response.equals("ok")){
             BottomSheetRegistro.closeDialog();
         }

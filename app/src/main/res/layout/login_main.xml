@@ -86,7 +86,7 @@
                     android:id="@+id/editCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-
+                    android:textCursorDrawable="@drawable/color_cursor"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/round_input_text"
                     android:hint="@string/input_correo"
@@ -102,7 +102,7 @@
                     android:id="@+id/editContra"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-
+                    android:textCursorDrawable="@drawable/color_cursor"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/round_input_text"
                     android:hint="@string/input_contraseña"

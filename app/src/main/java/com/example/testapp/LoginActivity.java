@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,8 +25,22 @@ public class LoginActivity extends AppCompatActivity {
     private Calendar calendario = Calendar.getInstance();
     private BottomSheetRegistro bottomSheetRegistro;
 
+    private void changeTheme(){
+        //Tiempo de espera de 2 segundos para cambiar el Theme de la aplicacion
+        try {
+            setTheme(R.style.Theme_TestApp_NoActionBar);
+            isLogin();
+
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        changeTheme(); //Para cambiar el tema actual
         super.onCreate(savedInstanceState);
 
         binding = LoginMainBinding.inflate(getLayoutInflater());
@@ -37,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void startIntent(){//Inicia la actividad principal
 
-        if (binding.chkRecordar.isActivated()){ //Si la opcion de guardar cuenta esta activado
+        if (binding.chkRecordar.isChecked()){ //Si la opcion de guardar cuenta esta activado
             saveAccount();
         }
 
@@ -50,18 +65,33 @@ public class LoginActivity extends AppCompatActivity {
 
     //Guarda el correo y contraseña ingresado por el usuario
     private void saveAccount(){
-        SharedPreferences preferences = getSharedPreferences("TestApp", Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("translate", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
         //Si existen credenciales previamente guardadas, entonces las elimina para guardar las nuevas limpiamente
         if (preferences.getString("correo", null) != null){
             editor.clear();
-            editor.commit();
+            editor.commit(); editor.apply();
         }
 
         editor.putString("correo", binding.editCorreo.getEditableText().toString());
         editor.putString("contra", binding.editContra.getEditableText().toString());
-        editor.commit();
+        editor.commit(); editor.apply();
+    }
+
+    //Verifica si el usuario ya ha guardado datos de inicio de sesion.
+    private void isLogin(){
+        SharedPreferences preferences = getSharedPreferences("translate", Context.MODE_PRIVATE);
+        Log.e("isLogin", preferences.getString("correo", "Sin correo"));
+
+        if (preferences.getString("correo", null) != null){
+            String correo = preferences.getString("correo", null);
+            String contra = preferences.getString("contra",null);
+
+            loginVolley = new LoginVolley(this,correo,contra);
+            loginVolley.start();
+        }
+
     }
 
     //===============================

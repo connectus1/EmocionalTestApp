@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initComponents(){
-        ItemTest itemTest =new ItemTest("Titulo de prueba","#2",1);
+        ItemTest itemTest =new ItemTest("Test Hamilton","#2",1);
         ArrayList arrayList = new ArrayList();
         arrayList.add(itemTest);
 

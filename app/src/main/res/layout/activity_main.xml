@@ -44,11 +44,11 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabQR"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
+
         android:layout_gravity="center"
-
         android:src="@drawable/ic_qr3"
-
 
         app:backgroundTint="@color/white"
         app:fabSize="normal"
@@ -56,14 +56,4 @@
         app:layout_anchorGravity="top|center"
         app:rippleColor="@color/black" />
 
-    <!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
-
-    <!--    <com.google.android.material.navigation.NavigationView-->
-    <!--        android:id="@+id/nav_view"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_gravity="start"-->
-    <!--        android:fitsSystemWindows="true"-->
-    <!--        app:headerLayout="@layout/nav_header_main"-->
-    <!--        app:menu="@menu/activity_main_drawer" />-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

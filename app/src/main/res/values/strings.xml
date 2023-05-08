@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestApp</string>
+    <string name="app_name">Psico-Test</string>
 
     <string name="input_correo">Ingrese correo</string>
     <string name="input_contraseña">Ingrese contraseña</string>
@@ -17,4 +17,18 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_off">Salir</string>
+
+    <!--    OPCIONES BUTTONS TEST-->
+    <string name="muy_de_acuerdo">Muy de\nacuerdo</string>
+    <string name="de_acuerdo">De\nacuerdo</string>
+    <string name="neutral">\nNeutral</string>
+    <string name="poco_de_acuerdo">Poco de\nacuerdo</string>
+    <string name="nada_de_acuerdo">Nada de\nacuerdo</string>
+    
+    <!--    RECOMENDACION PARA RESULTADOS-->
+    <string name="no_depresion">Si no estás experimentando depresión, es importante que sigas cuidando tu bienestar emocional. Una forma de hacerlo es establecer una rutina diaria que incluya actividades que te gusten y te hagan sentir bien, como hacer ejercicio, leer, escuchar música, etc.  Además, considera practicar técnicas de manejo del estrés, como la meditación o el yoga, para ayudarte a mantener un equilibrio emocional. Recuerda que el cuidado de la salud mental es importante para el bienestar general, y que siempre es bueno estar informado sobre los signos y síntomas de la depresión para poder identificarlos en ti mismo o en los demás.</string>
+    <string name="depresion_leve">Si estás experimentando depresión leve o menor, te recomendamos que intentes establecer una rutina diaria que incluya actividades que te gusten y te hagan sentir bien, como hacer ejercicio, leer, escuchar música, etc. También te sugerimos que busques apoyo emocional en amigos y familiares cercanos, puede ser beneficioso para tu bienestar emocional. Recuerda que es importante cuidar tu alimentación y dormir lo suficiente.</string>
+    <string name="depresion_moderada">Si estás experimentando depresión moderada, es importante que busques ayuda profesional. Un profesional de la salud mental puede evaluar tu situación y recomendarte un plan de tratamiento personalizado. También puedes considerar opciones como la terapia cognitivo-conductual, la terapia interpersonal o la terapia de aceptación y compromiso. Además, asegúrate de cuidar tu bienestar emocional a través de actividades que te gusten y te hagan sentir bien, como hacer ejercicio, leer, escuchar música, etc. Recuerda que la depresión moderada es una afección médica tratable y no tienes que enfrentarla sola/o :).</string>
+    <string name="depresion_severa">Si estás experimentando depresión severa, es importante que busques ayuda profesional inmediatamente. La depresión severa puede ser una afección médica grave que puede afectar gravemente tu calidad de vida y bienestar emocional. Un profesional de la salud mental puede evaluar tu situación y recomendarte un plan de tratamiento personalizado. Es importante que sepas que la depresión severa es una afección médica tratable y que con el tratamiento adecuado y el apoyo emocional, puedes recuperarte y volver a sentirte mejor. No dudes en buscar ayuda y apoyo de amigos y familiares cercanos durante este tiempo difícil.</string>
+    <string name="depresion_muy_severa">Si estás experimentando depresión muy severa, es importante que busques ayuda médica inmediata. La depresión muy severa puede ser una afección médica grave que puede poner en riesgo tu vida. Además, asegúrate de cuidar tu bienestar emocional a través de actividades que te gusten y te hagan sentir bien, como hacer ejercicio, leer, escuchar música, etc. Recuerda que la depresión muy severa es una afección médica tratable y que con el tratamiento adecuado y el apoyo emocional, puedes recuperarte y volver a sentirte mejor. No dudes en buscar ayuda y apoyo de amigos y familiares cercanos durante este tiempo difícil :D.</string>
 </resources>

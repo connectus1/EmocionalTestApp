@@ -30,6 +30,11 @@
         <item name="android:background">@drawable/round_top</item>
     </style>
 
+    <!--  SplashTheme  -->
+    <style name="SplashTheme" parent="Theme.TestApp.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
     <style name="Theme.TestApp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

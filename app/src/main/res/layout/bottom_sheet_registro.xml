@@ -44,6 +44,7 @@
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/round_input_text"
                 android:hint="@string/input_contraseña"
+                android:maxLines="1"
                 android:textSize="14sp" />
             <TextView
                 android:layout_width="match_parent"
@@ -59,6 +60,7 @@
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/round_input_text"
                 android:hint="@string/input_contraseña"
+                android:maxLines="1"
                 android:textSize="14sp" />
 
 
@@ -76,6 +78,7 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/round_input_text"
                 android:hint="@string/input_correo"
+                android:maxLines="1"
                 android:textSize="14sp" />
 
             <TextView
@@ -93,6 +96,7 @@
                 android:background="@drawable/round_input_text"
                 android:hint="@string/input_contraseña"
                 android:inputType="textPassword"
+                android:maxLines="1"
                 android:textSize="14sp" />
 
             <TextView

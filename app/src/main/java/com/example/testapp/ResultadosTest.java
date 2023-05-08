@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.Toast;
 
 import com.example.testapp.databinding.ActivityResultadosTestBinding;
@@ -18,6 +19,9 @@ import java.util.List;
 public class ResultadosTest extends AppCompatActivity {
     private ActivityResultadosTestBinding binding;
     private int[] datos = new int[]{0, 0, 0, 0, 0};
+    private String[] labels;
+    private int[] _recomendaciones;
+    private int indexMayor = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +29,24 @@ public class ResultadosTest extends AppCompatActivity {
         binding = ActivityResultadosTestBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Labels para el grafico de pastel
+        labels = new String[]{getString(R.string.muy_de_acuerdo),
+                getString(R.string.de_acuerdo),
+                getString(R.string.neutral),
+                getString(R.string.poco_de_acuerdo),
+                getString(R.string.nada_de_acuerdo)};
+
+        //Identificadores de recursos string para las recomendaciones de cada puntuacion
+        _recomendaciones = new int[]{R.string.depresion_muy_severa,
+                R.string.depresion_severa,
+                R.string.depresion_moderada,
+                R.string.depresion_leve,
+                R.string.no_depresion,
+            };
+
         initChart();
         setChart();
+        setRecomendacion();
 
         binding.btnFinish.setOnClickListener(View ->{this.finish();});
     }
@@ -58,8 +78,15 @@ public class ResultadosTest extends AppCompatActivity {
 
         //Iteramos los datos extraidos y los asignamos a un List<PieEntry>
         List<PieEntry> data = new ArrayList<>();
+        int tmpComparasion = -1;
         for (int i = 0; i < datos.length; i++) {
-            data.add(new PieEntry(datos[i]));
+
+            if (tmpComparasion < datos[i]) { //Obtiene cual fue el resultado que mas se repitio
+                tmpComparasion = datos[i];
+                indexMayor = i;
+            }
+
+            data.add(new PieEntry(datos[i], labels[i]));
         }
 
         return data;
@@ -81,6 +108,11 @@ public class ResultadosTest extends AppCompatActivity {
 
         binding.chart.setData(pieData);
         binding.chart.invalidate();
+    }
+
+    private void setRecomendacion(){
+        binding.txtRecomendacion.setMovementMethod(new ScrollingMovementMethod());
+        binding.txtRecomendacion.setText(_recomendaciones[indexMayor]);
     }
 
 }

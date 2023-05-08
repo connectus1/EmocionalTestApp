@@ -60,7 +60,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
-                android:text="Muy de\nacuerdo"
+                android:text="@string/muy_de_acuerdo"
                 android:textAlignment="center" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -96,7 +96,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
-                android:text="De\nacuerdo"
+                android:text="@string/de_acuerdo"
                 android:textAlignment="center" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -130,7 +130,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
-                android:text="\nNeutral"
+                android:text="@string/neutral"
                 android:textAlignment="center" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -167,7 +167,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
-                android:text="Poco de\nacuerdo"
+                android:text="@string/poco_de_acuerdo"
                 android:textAlignment="center" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -204,7 +204,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
-                android:text="Nada de\nacuerdo"
+                android:text="@string/nada_de_acuerdo"
                 android:textAlignment="center" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

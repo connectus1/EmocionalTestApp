@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigationView.findViewById(R.id.nav_off).setOnClickListener(clickOff);
 
         binding.fabQR.setOnClickListener(clickQR);
+        binding.fabQR.getDrawable().mutate().setTint(getColor(R.color.black));
+
     }
 
     private View.OnClickListener clickQR = view ->{

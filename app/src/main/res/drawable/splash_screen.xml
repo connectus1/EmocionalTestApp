@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/white" android:gravity="fill"/>
+    <item
+
+        android:width="180dp"
+        android:height="180dp"
+
+        android:gravity="center">
+
+        <bitmap android:src="@drawable/logo_psico_test" />
+
+    </item>
+</layer-list>

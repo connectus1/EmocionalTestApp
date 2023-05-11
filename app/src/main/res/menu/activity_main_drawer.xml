@@ -13,6 +13,14 @@
         <item
             android:title=""
             app:showAsAction="always" />
+
+
+<!--        <item-->
+<!--            android:id="@+id/nav_off"-->
+<!--            android:icon="@drawable/ic_off"-->
+<!--            android:title="@string/menu_off"-->
+<!--            app:showAsAction="always"/>-->
+
         <item
             android:title=""
             app:showAsAction="always" />

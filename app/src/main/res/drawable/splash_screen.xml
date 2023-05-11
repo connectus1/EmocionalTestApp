@@ -2,14 +2,20 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@color/white" android:gravity="fill"/>
-    <item
-
-        android:width="180dp"
-        android:height="180dp"
-
+    <item android:width="120dp"
+        android:height="120dp"
         android:gravity="center">
-
-        <bitmap android:src="@drawable/logo_psico_test" />
+        <bitmap android:src="@drawable/ic_account" />
 
     </item>
+<!--    <item>-->
+<!--        <TextView-->
+<!--            android:text="Tu texto aquí"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="#000000"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="16dp"-->
+<!--            android:gravity="center" />-->
+<!--    </item>-->
 </layer-list>

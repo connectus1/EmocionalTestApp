@@ -25,11 +25,12 @@ public class ResultadosTest extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         //Identificadores de recursos string para las recomendaciones de cada puntuacion
-        _recomendaciones = new int[]{R.string.depresion_muy_severa,
-                R.string.depresion_severa,
-                R.string.depresion_moderada,
-                R.string.depresion_leve,
+        _recomendaciones = new int[]{
                 R.string.no_depresion,
+                R.string.depresion_leve,
+                R.string.depresion_moderada,
+                R.string.depresion_severa,
+                R.string.depresion_muy_severa,
         };
 
         getData();

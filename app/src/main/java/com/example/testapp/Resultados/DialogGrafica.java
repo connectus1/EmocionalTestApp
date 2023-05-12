@@ -39,11 +39,13 @@ public class DialogGrafica extends AlertDialog.Builder{
         this.datos = datos;
 
         //Labels para el grafico de pastel
-        labels = new String[]{context.getString(R.string.muy_de_acuerdo),
-                context.getString(R.string.de_acuerdo),
-                context.getString(R.string.neutral),
+        labels = new String[]{
+                context.getString(R.string.nada_de_acuerdo),
                 context.getString(R.string.poco_de_acuerdo),
-                context.getString(R.string.nada_de_acuerdo)};
+                context.getString(R.string.neutral),
+                context.getString(R.string.de_acuerdo),
+                context.getString(R.string.muy_de_acuerdo)
+        };
 
         initChart();
         setChart();

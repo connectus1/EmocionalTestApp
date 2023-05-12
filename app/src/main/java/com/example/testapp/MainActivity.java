@@ -1,10 +1,15 @@
 package com.example.testapp;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.testapp.BottomDialog.BottomSheetQR;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testapp.databinding.ActivityMainBinding;
@@ -42,6 +47,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void exitAccount(){
+        SharedPreferences preferences = getSharedPreferences("translate", Context.MODE_PRIVATE);
+        AlertDialog dialog = null;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("¿Esta seguro de salir?");
+        builder.setTitle("Cerrar Sesión");
+
+        builder.setPositiveButton("Aceptar", (dialogInterface, i) -> {
+            if(preferences.getString("correo", null) != null){
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.commit(); editor.apply();
+            }
+
+            finalizar();
+        }).setNegativeButton("Cancelar", (dialogInterface, i) -> dialogInterface.dismiss());
+
+
+        dialog = builder.create();
+        dialog.show();
+
+    }
+
+    private void finalizar(){
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
 

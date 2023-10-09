@@ -17,7 +17,7 @@ import com.example.testapp.BottomDialog.BottomSheetRegistro;
 public class RegistroVolley extends Volley implements Response.Listener<String>, Response.ErrorListener {
     private Activity activity;
     private Usuario usuario;
-    private String url = "https://biosur365.com/emocionalapp/user-account.php";
+    private String url = "https://psicotest.speaksign.com.mx/API/user-account.php";
     private RequestRegistro requestRegistro;
 
     public RegistroVolley(Activity activity, Usuario usuario) {

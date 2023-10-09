@@ -22,12 +22,11 @@ import java.util.List;
 public class VolleyTest extends Volley implements Response.Listener<String>, Response.ErrorListener {
     private TestRequest request;
     private Activity activity;
-    private String url = "https://biosur365.com/emocionalapp/get-test.php";
+    private String url = "http://psicotest.speaksign.com.mx/API/get-test.php";
 
     public VolleyTest(Activity activity, String id){
         this.activity = activity;
         url = url + "?id=" + id;
-
         request = new TestRequest(Request.Method.GET, url, this::onResponse, this::onErrorResponse);
     }
 
@@ -43,14 +42,12 @@ public class VolleyTest extends Volley implements Response.Listener<String>, Res
         }
     }
 
-
     @Override
     public void onResponse(String response) {
         if (response.equals("error")){
             Toast.makeText(activity, "Error para cargar el test", Toast.LENGTH_SHORT).show();
             return;
         }
-
         ((TestActivity)activity).initPager(responseToList(response));
     }
 
